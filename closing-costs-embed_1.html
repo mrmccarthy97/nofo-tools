@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+  html { color-scheme: light; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>North Fork Closing Costs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ground: #F5F8F3;
+    --surface: #FFFFFF;
+    --surface-2: #EBF0E8;
+    --ink: #14231A;
+    --ink-2: #3C4E44;
+    --muted: #6C7A70;
+    --rule: #D7DFD4;
+    --rule-soft: #E6EBE3;
+    --accent: #2F5C43;
+    --accent-quiet: #5C8770;
+    --brass: #8A6D2F;
+    --band-bg: #16301F;
+    --band-ink: #F1F5EF;
+    --band-muted: #A3BCAD;
+    --field-bg: #FFFFFF;
+    --f-display: "Playfair Display", Georgia, serif;
+    --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0E1510; --surface: #161F19; --surface-2: #1D2821;
+      --ink: #E9EFE8; --ink-2: #BDC9BF; --muted: #8C9B91;
+      --rule: #2A362E; --rule-soft: #212C24;
+      --accent: #7FB394; --accent-quiet: #5D8A70; --brass: #C9A55F;
+      --band-bg: #16201A; --band-ink: #E9EFE8; --band-muted: #8C9B91;
+      --field-bg: #111A14;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0E1510; --surface: #161F19; --surface-2: #1D2821;
+    --ink: #E9EFE8; --ink-2: #BDC9BF; --muted: #8C9B91;
+    --rule: #2A362E; --rule-soft: #212C24;
+    --accent: #7FB394; --accent-quiet: #5D8A70; --brass: #C9A55F;
+    --band-bg: #16201A; --band-ink: #E9EFE8; --band-muted: #8C9B91;
+    --field-bg: #111A14;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--ground); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  .band { background: var(--band-bg); color: var(--band-ink); }
+  .band-in {
+    max-width: 1020px; margin: 0 auto; padding: 24px 24px 22px;
+    display: flex; gap: 20px 34px; align-items: flex-start; justify-content: space-between;
+  }
+  .band-text { min-width: 0; }
+  .band h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.1rem); line-height: 1.1; margin: 0 0 8px; text-wrap: balance; }
+  .band p { margin: 0; font-size: 0.92rem; color: var(--band-muted); max-width: 54ch; }
+  .band-logo { flex: none; background: #FFFFFF; padding: 12px 14px; border-radius: 2px; }
+  .band-logo img { display: block; width: 168px; height: auto; }
+
+  @media (max-width: 640px) {
+    .band-in { flex-direction: column-reverse; align-items: flex-start; gap: 18px; }
+    .band-logo img { width: 132px; }
+  }
+
+  main { max-width: 1020px; margin: 0 auto; padding-left: 24px; padding-right: 24px; padding-block: 20px 56px; }
+
+  .tabs { display: flex; gap: 3px; border-bottom: 1px solid var(--rule); margin-bottom: 22px; }
+  .tabs button {
+    appearance: none; background: none; border: 0; border-bottom: 2px solid transparent;
+    font-family: var(--f-body); font-size: 12px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); padding: 11px 14px; cursor: pointer;
+  }
+  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tabs button:hover { color: var(--ink); }
+
+  .grid { display: grid; grid-template-columns: minmax(250px, 340px) 1fr; gap: 26px; align-items: start; }
+
+  fieldset { border: 1px solid var(--rule); background: var(--surface); padding: 16px 18px 18px; margin: 0; }
+  legend { font-size: 10.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); padding: 0 7px; margin-left: -7px; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; margin-top: 14px; }
+  .field:first-of-type { margin-top: 6px; }
+  .field label { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+  .field .hint { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+  input[type="number"], input[type="text"] {
+    font-family: var(--f-body); font-size: 15px; font-variant-numeric: tabular-nums;
+    padding: 8px 10px; border: 1px solid var(--rule); background: var(--field-bg); color: var(--ink);
+    width: 100%; border-radius: 0;
+  }
+  .checks { display: flex; flex-direction: column; gap: 9px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule-soft); }
+  .check { display: flex; gap: 9px; align-items: flex-start; font-size: 12.5px; color: var(--ink-2); }
+  .check input { margin: 3px 0 0; accent-color: var(--accent); flex: none; }
+  .check span b { display: block; font-weight: 600; color: var(--ink); }
+  .check span i { font-style: normal; font-size: 11.5px; color: var(--muted); }
+
+  /* results */
+  .out { background: var(--surface); border: 1px solid var(--rule); }
+  .out-top { padding: 18px 20px 16px; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: flex-end; }
+  .big { display: block; }
+  .big .k { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .big .v { display: block; font-family: var(--f-display); font-size: 2.2rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+  .big.sub .v { font-size: 1.35rem; color: var(--ink-2); }
+
+  .rows { padding: 4px 20px 14px; }
+  .rowgroup { margin-top: 16px; }
+  .rowgroup h3 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; padding-bottom: 6px; border-bottom: 1px solid var(--rule-soft); }
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; padding: 7px 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+  .row:last-child { border-bottom: 0; }
+  .row .nm { font-size: 13.5px; }
+  .row .basis { grid-column: 1; font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .row .amt { grid-row: 1; grid-column: 2; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 14px; white-space: nowrap; text-align: right; }
+  .row.zero .nm, .row.zero .amt { color: var(--muted); font-weight: 400; }
+  .row.sum { border-top: 1px solid var(--rule); border-bottom: 0; margin-top: 4px; padding-top: 10px; }
+  .row.sum .nm { font-weight: 700; }
+  .row.sum .amt { font-weight: 700; }
+
+  details.assump { margin-top: 26px; border: 1px solid var(--rule); background: var(--surface); }
+  details.assump > summary {
+    cursor: pointer; padding: 13px 18px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--brass);
+    list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center;
+  }
+  details.assump > summary::-webkit-details-marker { display: none; }
+  details.assump > summary::after { content: "+"; font-size: 16px; color: var(--muted); }
+  details.assump[open] > summary::after { content: "\2212"; }
+  .assump-body { padding: 4px 18px 20px; border-top: 1px solid var(--rule-soft); }
+  .assump-body > p { font-size: 12.5px; color: var(--ink-2); max-width: 70ch; margin: 14px 0; }
+  .agrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px 20px; margin-top: 14px; }
+  .agrid .field { margin-top: 0; }
+  .aset { margin-top: 20px; }
+  .aset > h4 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+  .reset { appearance: none; background: none; border: 1px solid var(--rule); color: var(--ink-2); font-family: var(--f-body); font-size: 12px; font-weight: 600; padding: 8px 14px; cursor: pointer; margin-top: 20px; }
+  .reset:hover { border-color: var(--accent); color: var(--accent); }
+
+  .note { border-left: 2px solid var(--brass); background: var(--surface-2); padding: 13px 16px; margin: 22px 0 0; font-size: 12.5px; color: var(--ink-2); max-width: 78ch; }
+  .note b { color: var(--ink); }
+
+  footer { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 11.5px; color: var(--muted); max-width: 80ch; }
+  footer p { margin: 0 0 7px; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .out-top { gap: 14px 24px; }
+    .big .v { font-size: 1.8rem; }
+  }
+
+  @media print {
+    body { background: #fff; font-size: 11pt; }
+    .band { background: #fff; color: #14231A; border-bottom: 2px solid #16301F; }
+    .band p { color: #6C7A70; }
+    .band-logo { background: none; padding: 0; }
+    .tabs, .reset, details.assump > summary::after { display: none; }
+    .grid { grid-template-columns: 1fr; gap: 16px; }
+    details.assump { break-inside: avoid; }
+    details.assump[open] > summary { color: #6C7A70; }
+    .out, fieldset, details.assump { border-color: #CDD7CA; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="band">
+  <div class="band-in">
+    <div class="band-text">
+      <h1>North Fork Closing Cost Estimator</h1>
+      <p>Built for Southold Township, where buyers pay the 2% Peconic Bay CPF and the 0.5% Community Housing Fund on top of everything else. Every rate below is adjustable.</p>
+    </div>
+    <div class="band-logo">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcwAAAFlCAMAAABRFiiSAAAAYFBMVEX///////7//v7+/v7+/f39/v76/v39/Pz9+Pfu8e7axsPahoh2p40cb0HYMDYcQBsBOAwBKwUBKwMBKwIBJwIARRbXGSLWGyHWGSDXGR/SGiHWFyDVGB/VEBrSDxjNEBbn08z9AAAvB0lEQVR42u1diWLjNg6VeFMjNeM4R8fJZP7/L5c4KJE6fCWZxF1gt61jSxTFR4C4CDbNSN7GH0I3R7FRzZK87f78/v0mdDP0++3P22t0G2Aefj0/Cd0Q/Xr6Z4Mzm+715fAqdDt0OLwcot0A8/evw8tTYs5nYNDnr6TUixehU3RI3Bed2eLM57cf8XvQjz9Pr/8KHSXAMzbHwEwfrXXO2a8i6k7350nQOgdMewxM5Zuvp6AEzI8As1Gx/2rqtHDmx4DZdA9fTb2I2Y8Dc/e19NAJmB8J5n5//1UkYAqYAqaAKWAKmALmhWC+voLHSvxAm/T6+vp0M5z5cjg8vYg/fZNeng7Pp9x53wbMw69fEpQ7QofDr4vA3DIF3wXW8TYnMfvv7z9CR+ntkjVzv+WjeQeWW03u52A+//7RCZ2gqJszwdzvNpynd+Ak2l+H5bDZ5hzMP10jdIJseyaYu/3PuN5Edy2Yu/vdFkJ3e5K0I5iHP50PXmibjDfrY7kOZhcSzdtIXwFr7q9jTDtvz3nnQogLzkxgNl4L811BRzgzTYGmHQmv7R+u04H2CSjflmQS9xFncpMC5qeAmca1T0tsSL/qip+1indXobl7uEucWD82UYxd16+JWQHz48BEbfbn3dB3bRNU2xYX9w/3Vxgou4e+8XZavb1vYt8Pdz9Bm90LZ34qmAAYmicDSsfpYt3t9peDmRgzqgIe601SYtEsmRoTMD8LzGzmPzzUA+ub4eH+Osasntk/7OdeCAHzk8FEnjKuuvrhCix/Rl0wuGm6BOJ+y50nYH48mOlj+nPGVFqHy1WgZJc0QU9golK8ENYC5mdyZvq8ByB0LWcTEPv9RQ75HcrqaeXVSVYLmH9ZzNIIz3QXjdbJJWCCw6DERjfh7uFI1ETA/Dwwf8bGzpSXy+InyJiN0ROY8W6/EzD/OpjgdO/K0FnrQXu5wDwB3g7G2EblVmwTf640IGD+BTD3HXBmHtzWujatePtLYs59E5KBGrWelFkB80vELICZhGRGs7WeYidng7m/S3aJ98PI4GiZHAHz+a1L6LcCzRZZrZRurwbTqm4KimkHsZOLHAYwAWowjyhAz386IyGw4yEwp9TVYLpmYiy2Ts4Xs11izHRLl/WoM8CsVC6hJW82zl0FZlKAvGmGyXcAsZOzTRNwGPhkz/xElbZQgI6A+fKPVBM5WW3EqmvA/IkW/3AXsgLTBLROzrdL0izqH/Zng/n6KhVFTtGhc1ekWmKg2rd+AFBYB3KowZzLmA5yFO6WYG76Zv/99etweJJcy016fj48X5MEvQdlNF2T0Bgax3vVLcROdmerPyFA05OYBafBwzEwhT5ne8IeTH7lYfgTh7oRzO48MMEZmNQfOwiY3wRMj2CiiUHGjdPmrNgJx1xAe90JmN8CzAEsi/jzPrGoJji0dWdldqXGfkZlKQ1MwPz6XWBoWiCYMNYBb1EJzHj3cKbDwKRr72sw/VrGpoD52WDuMLDsSVAOk8v0rKTLHSRYBjZkFmDK/swvALNHMNHijGPkw+hV/+oykAnJzncC5ncRs+xa3e2qDBJzhnWCSg/cu58pQJhpIGB+LZh3bnTW01en7JKgMZ9vJ2B+GzHr8wpZ5PIof8I62bH608afe+HMb7Vmgg6zJ6d5e46DFuC7B4dBoASwEkxM6LoXML8CzI45E0Yf4GEwvTm272TPS6zH/K9azDZWOPPLwSR8AoOpTlgnuCOTGBOSqQXMbwAmhjMzbuDby21o2ndyPJBp0C27BuZxMfssiH0KmBAB44Vvf19aixr11P39fkv9YbsEU/ku4cxXqCj/r0S6NunfXy/PV4M5hbyKrXltw0itJh3s7h+GBOXI0hWYPAs2wfz1enh5Pfw5CK3Sn8PL4XBVpsHDXWz0BCZENw2DqdE62W342AH2Md35IjD/lWojZ1Qbsc01YIYCTAo26zOS22H3mB11pDmY/TEwIdVSMrpOpXSZa8AcbMmZmAaij+8zGOWxG8OetS/wFJh/Ohe8EdokyLZsrgIzqTrGjaDsCw7bQAX2At7/RIdBdvldCqYkQR8j5ayx9jowg1WhKAlSetvblY0GoPWSouT1cARM2dL317cnIJjN6OzZ3YMKpJtSlVnWyEMTxtkpiU/A/B5g9hWYe0JFF7GT/UrBQwhktoWLSMD8NmC6KWsZwCy2UmvtFg5a9Mh3GC+5EzC/IZhdASaKUJ19eksHLRSduQvaheInAfO7gAlOuWLo4SuXj+KEXfH7usYBA6e9G46BuZNqI38fTNwDVuY8g1OoHcttjQGVWeaz9qooMiNgfgcw77O7vBj7snYa7orf3ZdgcrWZSgALmN8ATPQRmAWYQ5vLTbStx13xJWdi1ExXW70EzG8BZgLGzj02iBaDaV2NNAcyHdzzU8Ts9wLzZ1yorLvK207WSSlmUTLPdqPMwIQ1WLTZvw0mR8DmYN5Fo2sH7b5gTG8VehP2R8C8FzC/BZizKpUWKgqXYKL6Y4eH+/3VnKm8UULH6DownVoDcyhKRIdKb03wW21UV5dku4gz37rGCJd9AmcOjW6XYKJelFtwqiuOmoH1tPHzpNoKTEs7Fo5wZhA6QfY6MJ2ex0Z2e/K/c8hxShFKCGEJJwfZsve73REwj4jZf1/+ETpFV+QAbYGJWSE5fqzHXfEcUzGUzXcczN0RMH+/vf2WiiJHq41ckZ2HflizAPN+P+28bRo1VhTeU+azQrfs/n5LzK4Xz5uy8w4vT79+SXrsJh3+fXmO7kow7TIEjZ6BEcxxVzzGx9Z2iF0E5svLy+sB/i20Sq8JsCuOXEQwlbVzMHfIgtycdS7vO6EcPL9Mcr4EzH8BSsHyCP16PVwFZgecubLTmffrzWInUFoWKyAso5UVmGslumSvySdvT2AwwxqYUHykLXgtbyyyqzuKSjDXUzQFzE/fOQ1gYgrQbmXow3S6BSbioV1iV8+YmoEpnPnXwUQ/u/MbYBbFR1jnmQKZu71w5ncDE45OWOdMKL9VVuL36CbotGmmbNljYD4ImH8fzKD1eoH8Oh26AesEPAx5+TwN5k7A/MtggjW5CeZdmAJVziaAulHKCpjfDUyqSLHJmbvy0DfQYe8MnqW4us+vBjMImH8ZzHwQmF4/h4Qrdk/6bAduBCpisNyAW4PpBcwvAnPj6Ip0wc+oRoC0aVudN+CeAvM4Z/4CEsy2wXy9fBs8l2Ui79v2ebUmx2KMyUkEJ47Q1I07Buavl8PL4der0Da9XOzOy9udj4B5F6yxdWvDaTBbZYcjpsnr4fVweBIP7KZn9unp8BwbdSGYdA7YJpjkVy/AhMjmz/1pzjwB5uvL79+/hf22+fL329OFnLnLezGPgTlUeXR2u9DT6ZKYRbURSSQ4nWng1GVgUnUKsjM3qgNDlaCpLaM2S7BdAGbqTBQ6QcE3l4I5wCZpNE3uN1WgwnMQVt2ySzD9WlWnqqaB0Amy7cVgIgDoF18FE4uPTOnQDRVXOwfM/giYhzfJm/3ovNkKzIcNzizL+2Ci1v39GWL2BJiS0f7xebMZKXKl7jdPOi3A3C5BK2B+NZiU59Oi920DzKL4yJbbT8D8ejAnoFQ7bHDcjsuRtG0726aw9MpXYEJKu4D5NzkT45PNsUNMoOLP4I0GMI9WbUekzCSPV4wdAfMTwdyPys32UbacDu0BzGPnKez3icuVnjxFsElMwPx7YP5MZgedf6ogJ+TnOsORnDWmPX7SSZk0nVbhUO2rFjA/FUzKgY2Kj1h0qrub1xQprzOWnX67zRVz15nplOTW+DDMq5sKmB8O5j2WDtk/PDwMk6cODswc0ld4dFC9HyirNn5F/aEyJNjaXe2Rb42O0OD+fmpQwPwEMAHIn3d915Re1/Sx64e7HSC6cuKXXj0ZgyZFQnLoKxcuNqhSg9Teg4D5WWJ2f9f3XUwisSpQazwIydh1fb+CWXn0yawedA+t4SpZE+xiaAK014+1bAXMDwYzLYGk8zi7GH4a4KU0xUOJ3PJ4C5TAtOiu1br1zKy9gPk5YGJx9RDgoEQ4xX1BIYYlmOBcoJ3t+wWY6Ybg1tuC5oAEzM8Cc0+ceYRWylg+9F1SkPabnHlWg2UIzHqp0b5NKv2j9TkKUFI8j9Na7WdUY/Zrp8KdcarDAsy3DgSz8NkWWWvPtTNJA92m+/v9ugWyW24uOtnYw6Qel2CCcBY6Rv4cztzvtk4qmQzLNW/d2i/7/X6/3x8/MHW3X9iZr6+S4nM6B+iM7DzGZb9FmxCP/15DepvuyU8xA/P18PpbaJsOvw9ng3kEgPv7NUS3eZlaPApmltpFdp4ktJ8oN3JVgYq/SbLX5NO3wQuYAqaAKWAKmB8I5v1+94UE/iIB88PA3N8LmP8VMDH+/FX0sBcwPxDMu68mWTM/Ckzjv35rUxAw3w/mr7cfJhjVfiWpVpmgwAMkcL2PM//8aNzXk3W2+/P8InC9C8zD6z8/vkUw4Mc/LwcB831gvrz+fvvzPaqPJzAFzfeA+fR0ODwdnr8BHZKQ/RYd+c709HKkDtDbb/jfN6E3CVeeE9FcBzPpHBK3v8FMA70anOaER6GbIue3Ur2sZKneEjmnrW43wJQs1dsiZ41ZT7bUCUwnnHlLpIyIUiEhISEhISEhISEhISEhIaH/a9JCN0QC5v8FmNbqzcouQt+SIHKyjqjFU8Ct0O0QwNauoqnb0AndHIWtozDeXuRIpps6Pur1aN6s7Aj4DyVBC5gCppCAKSRgCgmYAqaQgCkkYAoJmAKmgClgCgmYQgKm0DvAfHoRuh06vP4+Utb78PwkdEv0+rxZoOJN6MboTxKzahXM+EOKd9wa/VgH0zsnecM3RpuVC5TS2lpJRr0hMtZYpWROCwkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJbZEyRup33Bw5s5Y10jhnZUbfHq2nFFgbpXbHDVYbWQXTu+7P22/JkbqpfK63Q2zWc4C6l1fJm72xxNmnzbzZl8PLq4zQDdHr63YS9G/ZniB7TYQETCEBU0jAFDCFBEwhAVNIwBQwBUwBU0jAFBIwhd4B5tOz0A3R09PT8yaYEu29OTpEt146Jv4QujlarzZivG4kpev2ErpWMdNW81lhQjdCkGq5yphQU0b7Vqb6DVHbGr0uTDXUABIwb4kSklpKcQkJCQkJCQkJCQkJCQkJCQn9f5JSyhhx590Sad1oozd+lLIGt0XOqQ0sjbPe+yB0Q7QZAvPCljfJnXb9W0kbucW0EbdaoKLp/gjdHG0f7PYkuZb/mVRLSYKWjHYhAVNIwBQSMAVMIQFTSMAUEjAFTAFTwBQSMIUETKGTYB5xtB+kRvuNFWl/2ii4b7uXXxBVEbodev1nA0yoNvJH6nfc0kkYf95+r2caGCdpI/+ZaiOQ0CUpXTdGtlktA9S0Ssk5abdHwn9CQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJfQEopDXRLfdZ+o7vG/N/jqbUx+sb67LzLVHxKcDY3MC+1z9326d+bM1Nr/Bkvmv1mtXX4G/w43q+tTX96c1M5xl0f13/oe+NuAMzZIZF+A8wp8dv42d4Ma+2Er87/8XzZTZ2B1z8O/So99s0NgKlN7AqKG2JR2fGyOE/oVwnMsQFGU6c1JnZ936WZrm4JzC1KYLrLwPwQdUFf1LitX6DfYE3fdMVrzZcZXfzoNXCqTRJrgC+G3i12cxzTi84eALvWUe30ezkz8+YA1OfPj0MCM4kn2p1ivcmdGKl8cGvoT+1NvaJtbW6xG7+sv421c2k5Ss2YOGigrncxmi0GDuNl82u0g0HA+7uoEp9aryJ8A3AOj10Fvs2vnd7MLo+aUMvXtJlgFKsJttgC5Gc/5A3uevrGwl8ZA1Mhkq5OE7t3Ba55KSUwq2Fr1OxMXPqrTQOAM0qFAN1RSZWYv5SqB1DpsWWdTICSSZqFgmIs7lpjzWWu4iju+ZC4Cju5gSZc1wFmwJq27KBv4jDk+1XSfOCLR1AlYhqFiZNbw3PJhBCoF2VfgaPTN6ZETLuFukb9N02S6CuqaHqqPjo5mop31ZIzA2IbPIKJGp/38H3qeswraNd33joUP/AHfUczx+j0dSjYo3FB8Qim+ztceiqtUBnf5DZMOV+1TzfMbSLvGtdlsRGX9eWTUOwQTHP0xID0kgmjAV/Rl2AyYz52JlgYKaMiIgtzKA59yOIjcUQDLzRkCZaWX9cWwsPZdLmyRhVgdhVFz+IVntlPY5sJ5ICN+Zv074iyCse8w386o6fLOw8MxRen3xpUdBROUAJTWexZTCAbYNBMA0w6Xy5RPfFBQiagRMLewH8DT+bp/lpWKa/jMC5SBZjYhzjb8utQTOTGg1pZNzsEY0uVHQU4gomCU9nCMkHGHOWpNQ464RP7JsZz2jiDskPn1xxoFcIhKeWEpd6rYqIYN44f3pHupZLqbkNXGRK/xmLMgVHrMVfFX0OAXo1/D016iXYOpgUeHGBUXYw0E9Ny5EAzcGntIaE0qoUeIes7GIrEQtQlELht23i6H7i84M28SqU2gleFYWAsyrVgZlDBW6VP8OS4XFXPBNOiOE3v2OtSTYf37odpcXSgK+Ec04BsmsGoIXt6zaEjSy4irlHpgjMTdCjE28KC5+GC8SOVKo1NMnpwsGGR7jpUTzr+BL+OY96nMadm0r2P1IpLT8kIxKj4V766GQZHulkJZlqmmj6NmweRge+fhI8D6zo1RksPFLkwBePANMS1kjrXEJgg4XFB65piwia+H6gN2Hg/cSai8jiYar4DE6cr4USWNb69EEwclE5NTwB+HWIBpncDabUMuG0ATO0dTNMkdFA/SbxK3bKVBIEBtEXvk6C2OKw9XoiPSQqYaXE2E1LdIy/XqKh0NIt6/tKwy4OW9S6NeZLiht439ZF/hss7WEHTTCOmKcUs6HQRWC1xosGG03qkNCplsDIAq3kHSoVyCEBq2MOaYh3NudR2wr4FgC1rJ8Xee2JMlGWg5asZw5aokBiBlQCmUmqrW+o4l4AZaWpmlVTT6sUT1o0Tapp76KBVDmVvmrJJtdBt6rENPPTF0k29j8WKkm4OFtGycDhQMz4drgXx5Z3Bnw3osgG/hA82jzkr8c4jmBE8XWkYAj/JeVJ+I/QkON/U61VeM4vljWeJr6ZyAhPEXXpLhLYvlMxA7US2mRjcodPlexOLVCVs0oJss1qZxaDW1kD7nR4l4IoleR6YabCTHsDDYMhx5JMICulPTZzp2SKd2yNpNHkUXL2+l53xOvfezy3c/CUPcVRpeR0G1Igt/4wmh+bXG8dcjy4MApPGSycWm2YfT0fSs+0GmGSG6AWYtgDTJsRgdJLcKtYJmn+s/qf7h0ULqdMEZilPLWIFbQfDFpbWzPg0E1zSM/trxSw2P2iWULSwtYrmh5vGht53BiYhMiS7uxChOlYOCFp74Sq9CabuWGopN9BXBZgtjOwJMHUh0WmZIgUuzrwY65x5HEzNb1lwHdhevEr6DCaukDEbqUmEp78WYCbxoafVy/KCmceCFE3tVkyT88Us4GZZQpnsY083Kp7oPi8BoISlFSXJV3T2aD12q9CCk+TtWjO5JZK4gXYSVnYDTFbBOniRLlpXg5lmv+5wSE6ACapWvsJoYkzXvB9MsxQ/aQWOhbgBMN2kA/Dr9Q2Baasn8fdT3xBMeg16vlWmuRZMar8hm5SvxSnujCvBJCYkz43SYJ9k8VgfiZf022IMbdH742AC2iB5cD4VYNK3ExSbYGpWXHB64doUvX8/mC73rohdKOMUvTs+2oC+jHdEXPg0anJRL8BEM60jfTYZazmgmFVA6Daq0+p6MHGRC9SeBVxwlUgjUoBpMveAJQYskBYizb+HEswWo2bcTYXqT9dS79Mk1EswlfLN9LunpaQAM00cw16ukUXMGpjpYcyag3M0avPKTsfBNCG7Bx2qJEmv1lkmzcwFMp4H1jtB+oxCQWlY+zsyfWeKHyoQCTEWaKrsFho7cFSrtuqdYIZxEdDMhjHZ5YU+gWw6oDHkk4IZO+9HfLfcEWkNhN5b71iTMkswtbNuzhg1Z86gSGPu8qCbes3EaBFPwKTVWbSJzwazciROYOZ7KnPBuFKUtUlbtKojA8simGkq6RUwUU6FUcJUdiZ6JfAkV9u8D0yci2AOGj1ppH7iTBp9EDeWTL80+xvWWzYdv1YVM6VGqwAz6U8D2ZnngVl9NQNzFP0oENxFYNYxTxyM1HCSmCiz6ju0zUatZUOmyTPWpbkLU9iTklTNdeDJmAV3wevoE8Tx70HWrgSJztRmGcxRbvikcXWgmCXFo+RMT5YxvXMSCSqbdZuVBVuN6k9s8gpv9RxMj2Zg//g41N08AuZyzEswLS/0kQIHFyhAw8yDyGtmEvIIpq7BJEBYRUN1m21PdAiSucxgFranirAEsJwtJ7djNOH1XOPVO8Ec5QaJPfhvBWZaKCN53tlZ6t0pMHU2Eb1zk8Vac2YDHnRsr1r1t8FcGfMSTJ0lSJo6ztrmkjWzcv5nztTUd1KGNsFEPX9UvoAxA68e9Uv3KMwVdaMIXMKa1Wc444o6ex6Y2pKq4Cwtip1GIQEcWoPZmGR0MJR9VP40mHmKsmctRyBKE5V5K81G17bnceZyzCsws2oC9onT6iJtdr5mAoAtsdFQHa6alJRmsk1IY/e89LeOmMHbOZgojrsI1LH6Pr20UQ048AlNfaWjHdcEuMblQQDx0CufVMt2AhOa55wRjECBB+0kZ+K0iFPv49SVkYEe+aFuYfyes2a6+ZqJmiS51sy6frANpg05YJ59s7Rm8mtWYE6O4Aymyw9uwEqJEMadgTm+MxHcPIGpwYzilbO3V3qAPPh54Bpts8ObfJpmBNMzmFaHUSpYO2nnG2Cq7JYtez8Xsy6yj/98MMGfm3MU4hJM0p3X59h1dmYOiei534y1P9JRk+JjaLzYXVGDqfOATcMx9QOVCQ2hxf5xtACvWTObyNeM8qnHZVxXnEliQlvMzPRWjxNtM7+oUenKYdb7URtnMBOGtCTNcn+OcuamOw9HOQ3qB4PJrxlqMIlf1aj8uwxwZO6YgenA6zrEgIIqxBVoVI7HzMLZ54OJAxIJTLJOIqlBSzDXpsGQg/hVm3oCjKRsDCyC/Jwzx7GyHwImhrA+FkxFw5KM5EkoVrYxW3LakWzriU9nYBpeSovwHLoYwEejY0yruzbKurHdY2BCeCr9vvQt4KgmUanSMqizGIjogdV6rkHP5wHNzjSo02i24yPaMMUtUvt1WxnM4PCpj5OP+p1gNuYsMMvc0xFMNwMTnQbTcjLFE7QhM78bgxB4c15WyJFiq9hEkv8B41w4sI5iC2mc0/TTAS0bCvZrVAxBIbVbYLaQ4OMdOeLm2SdkGFjLC/SUmUl63KZTwE/WzPTgNihIIOe4Reo9hLOdZ8hC1tMmd96oF4bCYXMUzPw4dmrOfNkfDSbEsMmf4sf+5UBHi853ncHMOXADZIWN8XeXTcAOw3xs24yB/2TANeBGNsWTgTP1JpjasbG4cBU5isc7iITYQGtcpNAdmSbbYCY9iFx8qggoKPQxw0iSt15TagELq64MK4zK4Oiu+HQwdQZzliy4LmYdrIjkxqLp5huStI6VLA0rjIZlHzFTdlzy9AxMWg77UYsapYzXo9sGA7makxpmKYYjmJbmRd93jVkovej+xwQIW5hokO+c+oZgbu8r8Srr5760DBgEo8YB0u20Lqk5mNqF7Pa1NZjDPKBdrycTmL50tNktbTZ3AqIpNZg5baRM4AEwwcOojQmaUz0CLZuTP0DnbJ/eT5G7JD3RKcqJEWQCBEhu7EZHBsdwo/HGoqso6jBplXHBQDZrzwCm6jhtvX7FNrUE7nob0lOcLwKLCVzyNg7B262E8lF7yflJqbnIGHnwPHejsJh6z17Kbhw/R7MOcj3Hhi2DWT55HPNxzaSVK9oKTOKabj5t29EuJZd6W+pr5WKsleKErgDCwmDKO6PZ4HIFGV2Q35U6kjQETK3rIaeI8w4xrgP+CvaUALJKUaZWnkVeccgJ0qkxVy6Q7U65ewvvrC/i7jnI4uaSuGEZPQV3IdrAmx4o2bLbzKhXIDvIFdqg085zQpfCNEwwcZTHoBqEmFn3tZDfPWqDuN0zZImQBF7S6loeTVAnp+PZWHDg6OSc9awAFYloOaUoSSFVOVJS/3I2H7hhfLHHwHOqoAO3V7K+2Pql16Intehs63MOIjogMVbnDSvqEdwsbkyuM03gVgNE6C2mFgJiluInruNUwySymZ9z0/18j4ZyOd0BdT3b0GoYSv5Ns3hMX+wiZN7iHGH9K2dDUj6pU5tKELLvlGqJOZvOKGy5C5CbmIS7bS33HmdgMX6ww4PywmDw0nSAPL7xVXXjxjhFMebEVm0ec9tkhdq3hrNYYzJhi8RrC0tC4dPNs5+Wx+zoTfItcXY/fcHrhAu0y2bgpGyAdUwyyNd2YH+Az91wRtj0QxwvQsvUTpnXqKEESqzmpovlZvSE5Mmvm8IhUIZr9TJ3W0OY1bEh/FhmHW8Ym4mZYz92hV6swzBmHjQILSuvigGKtn5TjxmblD2bFmiKVeefx2B+PebgA++HoRhzh8Go0M+aLhadejsf5yUX2xPAUQk+h1B8wesEhse7nOQNDs3WZbVhupmSsyA4pOtWbSyeYGedSauEddw2pYPPc4Ba3ZQ6mvMwX3sInRZAlD3pcdse8Cr5YpvqzeOapxNv0CBa82tiXnvnjS/eJSS+BLFZNGaqN4VMC0NvP4Cy79tYPZrArL6k76ox54XdV7eWTsKF5mdW5yaqDpXo4eRQ0HB8jB2lYGc9wlQXty1MEbXY71LGRxZcAV48BZIQ2gYr0qiF5pYUp0mrAzEZo229ngVy5hvNNDsKF4EytQ4me4jTKgM7PWMkw1cX+TL0IpVHoB4umockzcjr2ixHU7fVrpzltjLOtTAzU6ScuriNnNJCYLOembrj+YcklFrteCu5J9cl91GnMeDwKH6dc8FpezndDGBadlkq5/z4OJObD4GVgOkmyKDCVvJWN7dIzoOkvjh5TtFRBKKoDq5YF3AHPPZf8yvzdKb98/xO2tpNMMG1naPAMBKBNtfnvpJ5TkM0tomvQn/xcsxeXzSRjOMnp185nGL1dPc4wuN4gb+EwHTBMWYQA56v9G3bHKdTO4jRW6hPtVJr0Ee/OKtphfndmDpXRC7Xn/YR+8Bb6IvBzqjVjn/CRmvVHoejbf4jpEnN7Bov1VFunhRj6bSWwbhxvtRs13pnBcxbBxO36YG7wcqhoP8BApNFgPxvkF3WrBC6XW1W2FJISEhISEhISEjov6Le6xYSVtut0ptaW0gG05k2AwNHSoHzrWf1ZiIoELH007Uaq/3NfzB8k9XHe2q3X7Ki8mVUfn0FyTz2mmKskPKjZ49cFl49Mk6YwwVRsM3QlMY4nbKYYmkx4mdxg30237QxLfnKoP4k/t/adZ8LpKrNI2uQGQzV5wxsOXKnjEK4uog/Uyjb+XLLmrI59AfZQgSM0rCNt1F6DOdiX61ywdsyCq8wOLrSj2CVajlJXeFzHdU75wI6xuKXdAFk5ZpLSkQbbazjbVd6qpSojW4sBFY5oxJ6h4lfRqvSPYnltMp65Gkmr+KZESTC53iqmpI7AmHjEGMIdAlsCHHrIVzVlQWBRnimwu+LHb4rk89F52DTBj4rPTQ9z9f7krDKJdRxjI3iXFfocd9zJ1NvA3e0r7PQIbXSu66z3qrajdT1MUyvh23EfggsFix9AT8FJPh0QeASgtCGBthNFZl54BMPjFWPJiCqXlO5X0/7DNN7u42wqTG2LzYwQWpLgzvE89WhqX7npMQlmIp25sxhhqT0ooFwPEKsjYqLp9X53g6LS9J+x5733tr08q7aiDVtrqvKvbhcxWleOLNfuxnrgtDv3coY+LMFrInl2+QEqy43lNm/eEpdlQ/ST7q+qJDZR7U2jmluJ7w5F4vTz6IvIkr4+5SWhh/XCm/g1v/lVqwkM3IDqYUunOTMwL0eS7A+DtXGbExLhW258FPuCBYfKjLnxg99Uy2tnMoXZ7vpKY12mN08jGB6qINbjsHweGSf0coYuwzFWKWX8tqwzZyOZZrpKdEWK3auqAmlrrk45vrTLfL4WFEEk0N7V5QvwrSsYiev69arqGCxq+VDNGVTcVWSUwNAV3PGLxJAV+gDmotcwurVTSUutHGYOk935L7GcitVhi2ubLVkhBvqKH1yBDqJWbi8KD9Jqd3ng+ldMYZlSgTvLcQlXFtID3FUobIsIp1WfQzaetYiMH94I1KkeItBh+lKMZcitIXSYLlihuci0V0T2rkkGeu5Lfg/qSGWdom4M3I7oGgjcgUlekH1wlwzQTnDRS6DGbehsAIEHXeQze0RrdRXxxK13ELC+/GHusB8MxaZxHLYkE8EuflY/cRm3uJ2MYcqzIognobTBqx0BdWmqzelXQ8Wtc6ki3r8pqh/D0qEQaETG0P7uD0A3m+G/XIhFzuWaaortFguQ8obrKhez3oj6+/ouZzhebkduMWHZwXkwY8LrcLiYrCxAzev2DhtPXJYCMNrnbeKOU3F+BpXKl1mrE4x33Y1BNgE43IZOO24YOg4qtwu5VPaOFwEZh7YSqQprpqG+65Y48GdKro2R+abhmBrzmCbM8DMtaDMFpiwsWu5ydiOW/bWYv4+N3AWmL4pwPS6H7k9F2XINZvbPKJYyQx349sSTNDdnC53KHounFkjYbyGltoSTKxoOq+gkcGErSdXgukrMFndw5IhnHabwCy4Ti93O6N4WZOACzBNE3ge6ArMYjdlshzCMn0VnkmlKpVb29pzJZiQkRstZ7NiUvw0JGnOZj3BWROhqj9soIy5BmnroQJyZYFTjU3Y8TVbI7rogTdcWaDRQ4t2BUwwVmO4zGWwAmaDq1qfd9ExmLESoZrr7VUJw1CM6iww86a/bTBxn5JeaC5+GPIc+kgwsRaVzWDyq7WoMRjXKt5rBBUwwMZXTQmmSX97UzyThopGtSqo6bAJ11ZgKvhSrXGmrxLx3wmmzpUeN8DsF/UUrPPbVu5Y/AwM/Gkr7RJMrCuZbO7lAWqwcPea7q0reVZy2p793rRwYXVxY7OY1V6xgkZ9yXnrCpwkuKFaF2Ai3tVJMqjoaH6Zyt5BP4mtwQTRp5diVifR03XevR9Mrl/GlWywzCOv/bX2jcteVddLKX0GmC7vTrZLzqQseSrWpleaiDov8uojwER/DKx6o0BRU1mq2Kw3NgNz/ivs/SKLNK4s7XoGZu32zNosmPCXqj9HweSySRYKTS/BzEbdRQ8CHdF5Mp9jXXDQljYWlYacgWmx4HZox1Kk7weT1iQscFqCyUUucTvoSibXUTDLwpmrpvJpMNnMxKJTHwVmmOpfaL8KZt+YS8Hkgyto538lo8f6b+gZWVn7cnlDkgnatO8HMz+tWOrB+6/LIpfhIjBJSeNaz71drjunwSzG4OPA9KNV5+wcTM8HO9hLwVS0fRoqgRpTGmJUNKA8vm+hyHiQiwHPvXjsFi96DZjlsTqjm1xR2RI6wGetAuwxMNF5DFKSDDd1MZiP9Rh8FJjOuFwYws/ErDb+UjCLWme4sTjMIoEsZvlYnDmYSdvk8uejz8t9AJhUzLGvaznSSSqOilyS5/VcMMli67LPDt+ivZgzucTkx4KpeH6hSltps+1YcVxfBiYJtcdl9fZ6zeyWYJJnjY58o1rH/iO0WaRFoAUqJ+WapSuu4G0wDRT4hRnZd6hUWGPaK9fM+PiRCpCf6pBEMzNNXHMVmI+xGU/EWQeT9s7GYS5m0WAoq9wuHERXgQk74IMqtVn2b8GRPA0ViRwrQZ0BZnEg6uPj/JiAc8G0aVnzoRn6xn0gmJOXlk5LsQtt9vzj3PlBYzHyeXWr0c5sDdiZ0dYZG7Y6QJCcsCfA1OdwpoaobOzqWn4unwy47go+smZWvVxdDc7hTM2uJ/dxYtaPoTl4wIo2u9Ijc9I363L5bbMNJritXX3ivYNqZLkk/2rVqOvELIA574oZFQPu6zytZhNM/MGMISz0bpjrwPwoD1AFZkZzrs3GteVEn1ozOzwuK9fqKzSgdvTGGVCMIJOqjERQ+VEqF+Ap0tPPgr+TOw+35Cc56dym3GgnMOEsMHAo5ZwdrWwPKp9OEFIpg0GvYbYGJoatbHCUxDI8rtY0tSfB5AIr2EoupmQN1ktQahvg8RQKu+gsuWBaZ6gYW19lVhhDpeBKn1sLRxp01fEX6A2zNZj8MmkdLnloAlOPHoKiV1xflNZRrjg1s13GBhrUOpIm0mt/BpgZhX48VU8Pgx7TIDALQa2DOW++xYOiyE+uVw4YqcE0J8BUaYCG8cxDcu15s+1j2wbzccj+NJsPa5072h9nxXQ1hLZKnchANlEu/ejHswyoVh/6V90STOYP8hBMYGKFTgZTKyropvwamB4LckF9uyMKxAxMrNWXXwWtC+Vpqqm1zIYtMHGWcVhNu5bOQFqw0rlgWj4wkMG0HVfuV5eCCaHozGOcaVSBCZmTfLSfr3SUKtSKKGQwydbXk46MVSqn0SWHraV6sOiLL4w/XLwg7Ww6YpEEdVHgJzdAuqg7dnwPhCpwRA08zXJU302mIshKA1v5IiYBzZU1zVrnylIyzaDsWAnzY5f40Uux4aldrCqbZiQcAtLl0j/YE8DgiJh1eYyr6AekcETD3otJCSoKoap86mESwyye3DQvKayLdTy5pr3JsyboohzwVKmbC9hN1fzTFZPANlyF1DKYXNSxKXJTja8bgEPL9eZZTB5tq2E85GjKOdL5aFQ8EBpLJLZzLc+Tcd80ZUZUgwfnTLJKsfakawbWZixqPGfNqd3pHSL7PK0jf3F3RMHzY6bBIokFhoq5MCxOhsNqcjHXYISaSYYzkMZSTVjHc8Aj2jGnktQePPghSZBcpdLggYMQQyKjjlJLIzmBuISSpZqAfGgEFGTM5i9vTk9agZkaSIovptVtKbYa+kiVBPFQaz7imjUSzaXe+8AgQ2ilFFppQeBHgUGTVG7OiNb0ir1NHzFJvpmCL3XNry6PBKhf05AWrxC8DTQGOq/dTsV+OGLaY3bvOMbjRFH0OK4gCU+0XPmzBBNzHnrKmiSPRV8d5eCLQw8g9WuqB2dcq02gZL4Ipbbw/J2pDt/AJ/HwHDfWci0/XCaN8r6qfUjOcVvW7KOPfePXdw54WxUH5MY5CTx1h9wTdLITVHks/KtY96usGahzzVOXKzLiKZ7aurJC41gm00x1CTExtZgnJvTLXoEfLucmNfkw5Y2FI5ZjzK9u1dirfgzEq7jiiXWKujbVYCysx1zHFyzwpLEUFfVa38KqDomusKIzmEviHNy0OsepviBG+rqi4GA+FHLt/nXOtKbtllfzefUQg/aGixEC64K4rSSSKd+l1zmBvuhVhKmepldRrNBOo1KVICybDitj0JkMprPBxyN2dJoXxX1ZkylLME4LYIJtebQpJ/HnepBJaBWrOpyPNPSKFNByNtGBBbRAWdiIY5XdkIcr0Sc86uusa/Fgl/UXX11xKHUhSWwFqwJuX0CjqEzwgcPnq746y06wUmnFpIL6/IJradTw0BuHS7K64KXWLX/bLEveggsRvqMdEmZ2L+Sw5WxtSGDMRQmpRr42yfrXyVyFTIrEQsHlwoe55l8OXbdQU5K/T7DD9hiTayUWgiCX7POBT+GEnI+t9/bj1bnQHxrkDKaFwolUCdCRcl2D6Qty+ahYa/kNyByzVvNDsDyhLrQcP77oPO7jFzTNHIPxsd5varOwI2g8CrN6VX7PMi9ILeKLlo6B5dVdVY2gJqGKzVH1HjJESGcnD9bmhitssY8tb7NLl2rcMgYuGbwSd1ClvmtTqtf5xparLabWjxxfqOiGsVc6SzzV4H40qCUJbqj0yLYu3zjj98yCWhnMFkrtKjQFW2YqSHasqwzSfrp04UroGX/LD9RF/UsXOizTvMnkanz9cqSTbpgWOct9mhaLZRY5dBfzn70x3iwPQzNGS7W5jyHcF9Q11stQ/Aco2WtJQ/Hqq/vxP0qI2vXAnsDAAAAAAElFTkSuQmCC" alt="Thomas J. McCarthy Real Estate, Inc." width="460" height="357">
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="tabs" role="tablist" aria-label="Estimate type">
+    <button id="tab-buyer" role="tab" aria-selected="true" aria-controls="panel-buyer">Buyer estimate</button>
+    <button id="tab-seller" role="tab" aria-selected="false" aria-controls="panel-seller">Seller net sheet</button>
+  </div>
+
+  <!-- ============ BUYER ============ -->
+  <div id="panel-buyer" role="tabpanel" aria-labelledby="tab-buyer">
+    <div class="grid">
+      <fieldset>
+        <legend>The purchase</legend>
+
+        <div class="field">
+          <label for="b-price">Purchase price</label>
+          <input type="number" id="b-price" value="999000" min="0" step="1000" inputmode="numeric">
+        </div>
+
+        <div class="field">
+          <label for="b-down">Down payment (%)</label>
+          <input type="number" id="b-down" value="20" min="0" max="100" step="1" inputmode="decimal">
+          <span class="hint" id="b-loan-hint">Loan amount: &mdash;</span>
+        </div>
+
+        <div class="checks">
+          <label class="check">
+            <input type="checkbox" id="b-financed" checked>
+            <span><b>Financing the purchase</b><i>Nearly 60% of Q4 2025 North Fork sales were all cash. Uncheck for cash.</i></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="b-improved" checked>
+            <span><b>Improved property</b><i>A house on it. Uncheck for vacant land, which gets a smaller allowance.</i></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="b-fthb">
+            <span><b>Qualified first-time homebuyer</b><i>Household income cap $187,440. Purchase price cap $707,454. Both as of August 11, 2025.</i></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="out">
+        <div class="out-top">
+          <span class="big"><span class="k">Estimated cash to close</span><span class="v" id="b-total">&mdash;</span></span>
+          <span class="big sub"><span class="k">Closing costs</span><span class="v" id="b-costs">&mdash;</span></span>
+          <span class="big sub"><span class="k">Down payment</span><span class="v" id="b-downamt">&mdash;</span></span>
+        </div>
+        <div class="rows" id="b-rows"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SELLER ============ -->
+  <div id="panel-seller" role="tabpanel" aria-labelledby="tab-seller" hidden>
+    <div class="grid">
+      <fieldset>
+        <legend>The sale</legend>
+
+        <div class="field">
+          <label for="s-price">Sale price</label>
+          <input type="number" id="s-price" value="999000" min="0" step="1000" inputmode="numeric">
+        </div>
+
+        <div class="field">
+          <label for="s-payoff">Mortgage payoff</label>
+          <input type="number" id="s-payoff" value="0" min="0" step="1000" inputmode="numeric">
+          <span class="hint">Remaining principal, plus any per diem interest.</span>
+        </div>
+
+        <div class="field">
+          <label for="s-listfee">Listing side commission (%)</label>
+          <input type="number" id="s-listfee" value="2.5" min="0" max="10" step="0.1" inputmode="decimal">
+        </div>
+
+        <div class="field">
+          <label for="s-buyfee">Buyer agent compensation (%)</label>
+          <input type="number" id="s-buyfee" value="2.5" min="0" max="10" step="0.1" inputmode="decimal">
+          <span class="hint">Set to 0 if the buyer pays their own agent.</span>
+        </div>
+      </fieldset>
+
+      <div class="out">
+        <div class="out-top">
+          <span class="big"><span class="k">Estimated net proceeds</span><span class="v" id="s-net">&mdash;</span></span>
+          <span class="big sub"><span class="k">Total selling costs</span><span class="v" id="s-costs">&mdash;</span></span>
+        </div>
+        <div class="rows" id="s-rows"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ASSUMPTIONS ============ -->
+  <details class="assump" id="assump">
+    <summary>Rates and assumptions &mdash; every figure is editable</summary>
+    <div class="assump-body">
+
+      <p>The tax rates and recording fees below come from the Suffolk County Clerk and the Township's own first-time homebuyer checklist, current as of September 2026. The service costs are typical North Fork ranges, not quotes. Change any of them and both estimates recalculate.</p>
+
+      <p>One note on the first-time buyer exemption: the Township's checklist is written against the 2% Peconic Bay CPF. This tool applies it to the 0.5% Community Housing Fund as well, since both sit in the same article of the Tax Law. Worth confirming with the title company before a buyer relies on it.</p>
+
+      <div class="aset">
+        <h4>Transfer taxes, set by statute</h4>
+        <div class="agrid">
+          <div class="field">
+            <label for="a-cpf">Peconic Bay CPF (%)</label>
+            <input type="number" id="a-cpf" value="2" step="0.1" min="0">
+            <span class="hint">Buyer pays. Southold.</span>
+          </div>
+          <div class="field">
+            <label for="a-chf">Community Housing Fund (%)</label>
+            <input type="number" id="a-chf" value="0.5" step="0.1" min="0">
+            <span class="hint">Buyer pays. Since April 1, 2023.</span>
+          </div>
+          <div class="field">
+            <label for="a-allow-i">Allowance, improved ($)</label>
+            <input type="number" id="a-allow-i" value="200000" step="5000" min="0">
+            <span class="hint">Southold Township. Deducted before the 2.5% applies.</span>
+          </div>
+          <div class="field">
+            <label for="a-allow-u">Allowance, unimproved ($)</label>
+            <input type="number" id="a-allow-u" value="75000" step="5000" min="0">
+            <span class="hint">Southold Township vacant land.</span>
+          </div>
+          <div class="field">
+            <label for="a-fthb-price">First-time buyer price cap ($)</label>
+            <input type="number" id="a-fthb-price" value="707454" step="1000" min="0">
+            <span class="hint">80% of the SONYMA non-target one-family limit for Suffolk County.</span>
+          </div>
+          <div class="field">
+            <label for="a-fthb-income">First-time buyer income cap ($)</label>
+            <input type="number" id="a-fthb-income" value="187440" step="1000" min="0">
+            <span class="hint">Combined household. Shown for reference, not calculated here.</span>
+          </div>
+          <div class="field">
+            <label for="a-mansion">Mansion tax (%)</label>
+            <input type="number" id="a-mansion" value="1" step="0.1" min="0">
+            <span class="hint">Buyer pays. Flat rate outside NYC.</span>
+          </div>
+          <div class="field">
+            <label for="a-mansion-th">Mansion tax threshold ($)</label>
+            <input type="number" id="a-mansion-th" value="1000000" step="50000" min="0">
+            <span class="hint">Applies to the full price, not just the excess.</span>
+          </div>
+          <div class="field">
+            <label for="a-mort">Mortgage tax, borrower share (%)</label>
+            <input type="number" id="a-mort" value="0.8" step="0.05" min="0">
+            <span class="hint">Suffolk is 1.05% total: 0.5% basic, 0.3% SONYMA, 0.25% MTA. The MTA quarter point does not land on the borrower for a 1&ndash;2 family.</span>
+          </div>
+          <div class="field">
+            <label for="a-mort-ded">Mortgage tax deduction ($)</label>
+            <input type="number" id="a-mort-ded" value="30" step="5" min="0">
+            <span class="hint">Off the SONYMA portion, 1&ndash;2 family dwelling.</span>
+          </div>
+          <div class="field">
+            <label for="a-nys">NYS transfer tax</label>
+            <input type="text" id="a-nys" value="$2.00 per $500" disabled>
+            <span class="hint">Seller pays. Works out to 0.4%.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="aset">
+        <h4>Buyer service costs, typical North Fork</h4>
+        <div class="agrid">
+          <div class="field"><label for="a-title-pct">Owner's title insurance (%)</label><input type="number" id="a-title-pct" value="0.45" step="0.05" min="0"><span class="hint">TIRSA rates run roughly 0.4 to 0.6%.</span></div>
+          <div class="field"><label for="a-title-lender">Lender's policy ($)</label><input type="number" id="a-title-lender" value="500" step="50" min="0"><span class="hint">Simultaneous issue.</span></div>
+          <div class="field"><label for="a-title-fees">Search, exam, closing fees ($)</label><input type="number" id="a-title-fees" value="1250" step="50" min="0"></div>
+          <div class="field"><label for="a-survey">Survey ($)</label><input type="number" id="a-survey" value="1200" step="50" min="0"></div>
+          <div class="field"><label for="a-batty">Buyer's attorney ($)</label><input type="number" id="a-batty" value="4000" step="100" min="0"></div>
+          <div class="field"><label for="a-deed">Deed recording fee ($)</label><input type="number" id="a-deed" value="400" step="25" min="0"><span class="hint">Suffolk residential deed is $375 plus $5 per page.</span></div>
+          <div class="field"><label for="a-mortrec">Mortgage recording fee ($)</label><input type="number" id="a-mortrec" value="475" step="25" min="0"><span class="hint">$440 plus $5 per side. Separate from the mortgage tax. Financed only.</span></div>
+          <div class="field"><label for="a-inspect">Home inspection ($)</label><input type="number" id="a-inspect" value="900" step="50" min="0"></div>
+          <div class="field"><label for="a-bank">Lender fees ($)</label><input type="number" id="a-bank" value="1800" step="100" min="0"><span class="hint">Origination, processing, wire. Financed only.</span></div>
+          <div class="field"><label for="a-appraisal">Appraisal ($)</label><input type="number" id="a-appraisal" value="750" step="50" min="0"><span class="hint">Financed only.</span></div>
+          <div class="field"><label for="a-prepaid">Prepaids and escrows ($)</label><input type="number" id="a-prepaid" value="4000" step="250" min="0"><span class="hint">The least predictable line. Depends on closing date and the lender's cushion.</span></div>
+        </div>
+      </div>
+
+      <div class="aset">
+        <h4>Seller service costs</h4>
+        <div class="agrid">
+          <div class="field"><label for="a-satty">Seller's attorney ($)</label><input type="number" id="a-satty" value="4000" step="100" min="0"></div>
+          <div class="field"><label for="a-sclose">Closer, continuation, misc ($)</label><input type="number" id="a-sclose" value="600" step="50" min="0"></div>
+          <div class="field"><label for="a-ssurvey">Survey provided by seller ($)</label><input type="number" id="a-ssurvey" value="0" step="100" min="0"><span class="hint">Only if the seller agrees to supply one.</span></div>
+        </div>
+      </div>
+
+      <button class="reset" type="button" id="reset">Reset every figure to default</button>
+    </div>
+  </details>
+
+  <div class="note">
+    <b>What this does not include.</b> Property tax and fuel adjustments between buyer and seller, which depend entirely on the closing date. Any capital gains exposure on the seller side, which is a question for an accountant. Repairs negotiated after inspection. Association or private road fees. Anything specific to the parcel, which is exactly the kind of thing worth a phone call about.
+  </div>
+
+  <footer>
+    <p><b>This is an estimate, not a closing statement.</b> Figures are for Southold Township as of September 2026 and are provided for planning purposes only. Transfer tax allowances, first-time homebuyer limits and title rates change. Nothing here is legal, tax or lending advice, and the actual numbers come from your attorney, title company and lender.</p>
+    <p>Rate sources: NY Tax Law &sect;1402-a (mansion tax), Suffolk County Clerk deed and mortgage recording schedule (recording fees and mortgage tax), Southold Township first-time homebuyer exemption checklist effective August 11, 2025 (income and price caps), TIRSA rate manual (title insurance). Thomas J. McCarthy Real Estate, Inc., 46520 Route 48, Southold NY 11971.</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var DEFAULTS = {
+    "a-cpf": 2, "a-chf": 0.5, "a-allow-i": 200000, "a-allow-u": 75000,
+    "a-fthb-price": 707454, "a-fthb-income": 187440,
+    "a-mansion": 1, "a-mansion-th": 1000000, "a-mort": 0.8, "a-mort-ded": 30,
+    "a-title-pct": 0.45, "a-title-lender": 500, "a-title-fees": 1250,
+    "a-survey": 1200, "a-batty": 4000, "a-deed": 400, "a-mortrec": 475,
+    "a-inspect": 900, "a-bank": 1800, "a-appraisal": 750, "a-prepaid": 4000,
+    "a-satty": 4000, "a-sclose": 600, "a-ssurvey": 0
+  };
+  var KEY = "mccarthy-closing-assumptions-v2";
+
+  var usd = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  var $ = function (id) { return document.getElementById(id); };
+  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var saved = JSON.parse(raw);
+      Object.keys(DEFAULTS).forEach(function (k) {
+        if (saved[k] !== undefined && $(k)) $(k).value = saved[k];
+      });
+    } catch (e) { /* private window, blocked storage: defaults are fine */ }
+  }
+  function save() {
+    try {
+      var out = {};
+      Object.keys(DEFAULTS).forEach(function (k) { if ($(k)) out[k] = $(k).value; });
+      localStorage.setItem(KEY, JSON.stringify(out));
+    } catch (e) { /* nothing to do */ }
+  }
+
+  function group(title, rows) {
+    var parts = ['<div class="rowgroup"><h3>' + title + "</h3>"];
+    rows.forEach(function (r) {
+      if (r.skip) return;
+      var zero = !r.sum && Math.round(r.amt) === 0;
+      parts.push(
+        '<div class="row' + (r.sum ? " sum" : "") + (zero ? " zero" : "") + '">' +
+          '<span class="nm">' + r.nm + "</span>" +
+          '<span class="amt">' + usd.format(r.amt) + "</span>" +
+          (r.basis ? '<span class="basis">' + r.basis + "</span>" : "") +
+        "</div>"
+      );
+    });
+    return parts.join("") + "</div>";
+  }
+
+  function buyer() {
+    var price = Math.max(0, num("b-price"));
+    var financed = $("b-financed").checked;
+    var improved = $("b-improved").checked;
+    var fthb = $("b-fthb").checked;
+    var downPct = Math.min(100, Math.max(0, num("b-down")));
+    var down = financed ? price * downPct / 100 : price;
+    var loan = financed ? Math.max(0, price - down) : 0;
+
+    $("b-loan-hint").textContent = financed
+      ? "Loan amount: " + usd.format(loan)
+      : "Paying cash, no loan.";
+
+    var allowance = improved ? num("a-allow-i") : num("a-allow-u");
+    var taxable = Math.max(0, price - allowance);
+
+    var fthbCap = num("a-fthb-price");
+    var fthbApplies = fthb && price <= fthbCap;
+    var fthbBlocked = fthb && !fthbApplies;
+
+    var cpf = fthbApplies ? 0 : taxable * num("a-cpf") / 100;
+    var chf = fthbApplies ? 0 : taxable * num("a-chf") / 100;
+    var mansion = price >= num("a-mansion-th") ? price * num("a-mansion") / 100 : 0;
+    var mortTax = loan > 0 ? Math.max(0, loan * num("a-mort") / 100 - num("a-mort-ded")) : 0;
+
+    var exemptNote = "Exempt, first-time homebuyer";
+    var blockedNote = "Price is above the " + usd.format(fthbCap) + " first-time buyer cap";
+
+    var taxes = [
+      { nm: "Peconic Bay CPF", amt: cpf,
+        basis: fthbApplies ? exemptNote
+             : fthbBlocked ? blockedNote
+             : num("a-cpf") + "% of " + usd.format(taxable) + " (price less the " + usd.format(allowance) + " allowance)" },
+      { nm: "Community Housing Fund", amt: chf,
+        basis: fthbApplies ? exemptNote : num("a-chf") + "% of " + usd.format(taxable) },
+      { nm: "Mansion tax", amt: mansion,
+        basis: mansion ? num("a-mansion") + "% of the full " + usd.format(price) : "Not owed below " + usd.format(num("a-mansion-th")) },
+      { nm: "Mortgage recording tax", amt: mortTax, skip: !financed,
+        basis: num("a-mort") + "% of " + usd.format(loan) + " less the " + usd.format(num("a-mort-ded")) + " deduction" }
+    ];
+    var taxTotal = cpf + chf + mansion + mortTax;
+    taxes.push({ nm: "Taxes subtotal", amt: taxTotal, sum: true });
+
+    var titleIns = price * num("a-title-pct") / 100;
+    var titleRows = [
+      { nm: "Owner's title insurance", amt: titleIns, basis: num("a-title-pct") + "% of " + usd.format(price) },
+      { nm: "Lender's policy", amt: num("a-title-lender"), skip: !financed },
+      { nm: "Search, exam and closing fees", amt: num("a-title-fees") },
+      { nm: "Survey", amt: num("a-survey") },
+      { nm: "Deed recording fee", amt: num("a-deed") },
+      { nm: "Mortgage recording fee", amt: num("a-mortrec"), skip: !financed }
+    ];
+    var titleTotal = titleIns + (financed ? num("a-title-lender") + num("a-mortrec") : 0) +
+      num("a-title-fees") + num("a-survey") + num("a-deed");
+    titleRows.push({ nm: "Title and recording subtotal", amt: titleTotal, sum: true });
+
+    var proRows = [
+      { nm: "Buyer's attorney", amt: num("a-batty") },
+      { nm: "Home inspection", amt: num("a-inspect") },
+      { nm: "Lender fees", amt: num("a-bank"), skip: !financed },
+      { nm: "Appraisal", amt: num("a-appraisal"), skip: !financed },
+      { nm: "Prepaids and escrows", amt: num("a-prepaid"), skip: !financed, basis: "Varies with closing date" }
+    ];
+    var proTotal = num("a-batty") + num("a-inspect") +
+      (financed ? num("a-bank") + num("a-appraisal") + num("a-prepaid") : 0);
+    proRows.push({ nm: "Services subtotal", amt: proTotal, sum: true });
+
+    var costs = taxTotal + titleTotal + proTotal;
+
+    $("b-rows").innerHTML =
+      group("Taxes", taxes) +
+      group("Title and recording", titleRows) +
+      group("Professional services", proRows);
+
+    $("b-total").textContent = usd.format(down + costs);
+    $("b-costs").textContent = usd.format(costs);
+    $("b-downamt").textContent = financed ? usd.format(down) : "Cash purchase";
+  }
+
+  function seller() {
+    var price = Math.max(0, num("s-price"));
+    var payoff = Math.max(0, num("s-payoff"));
+    var listPct = num("s-listfee"), buyPct = num("s-buyfee");
+    var listFee = price * listPct / 100;
+    var buyFee = price * buyPct / 100;
+
+    // NYS transfer tax: $2.00 for each $500 or fractional part thereof.
+    var nys = Math.ceil(price / 500) * 2;
+
+    var commRows = [
+      { nm: "Listing side commission", amt: listFee, basis: listPct + "% of " + usd.format(price) },
+      { nm: "Buyer agent compensation", amt: buyFee, basis: buyPct + "% of " + usd.format(price) },
+      { nm: "Commission subtotal", amt: listFee + buyFee, sum: true }
+    ];
+
+    var otherRows = [
+      { nm: "NYS transfer tax", amt: nys, basis: "$2.00 per $500 of price" },
+      { nm: "Seller's attorney", amt: num("a-satty") },
+      { nm: "Closer, continuation and misc", amt: num("a-sclose") },
+      { nm: "Survey provided by seller", amt: num("a-ssurvey") },
+      { nm: "Mortgage payoff", amt: payoff, basis: payoff ? "Principal balance entered above" : "No mortgage entered" }
+    ];
+    var otherTotal = nys + num("a-satty") + num("a-sclose") + num("a-ssurvey") + payoff;
+    otherRows.push({ nm: "Other costs subtotal", amt: otherTotal, sum: true });
+
+    var total = listFee + buyFee + otherTotal;
+
+    $("s-rows").innerHTML =
+      group("Commission", commRows) +
+      group("Taxes, services and payoff", otherRows);
+
+    $("s-costs").textContent = usd.format(total);
+    $("s-net").textContent = usd.format(price - total);
+  }
+
+  function recalc() { buyer(); seller(); save(); }
+
+  // tabs
+  function select(which) {
+    var isBuyer = which === "buyer";
+    $("tab-buyer").setAttribute("aria-selected", String(isBuyer));
+    $("tab-seller").setAttribute("aria-selected", String(!isBuyer));
+    $("panel-buyer").hidden = !isBuyer;
+    $("panel-seller").hidden = isBuyer;
+  }
+  $("tab-buyer").addEventListener("click", function () { select("buyer"); });
+  $("tab-seller").addEventListener("click", function () { select("seller"); });
+
+  $("reset").addEventListener("click", function () {
+    Object.keys(DEFAULTS).forEach(function (k) { if ($(k)) $(k).value = DEFAULTS[k]; });
+    recalc();
+  });
+
+  document.addEventListener("input", function (e) {
+    if (e.target.matches("input")) recalc();
+  });
+  document.addEventListener("change", function (e) {
+    if (e.target.matches('input[type="checkbox"]')) recalc();
+  });
+
+  load();
+  recalc();
+})();
+</script>
+
+<script>
+(function () {
+  function report() {
+    var h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body ? document.body.scrollHeight : 0
+    );
+    try { parent.postMessage({ mccarthyCalcHeight: h }, "*"); } catch (e) {}
+  }
+  if (window.ResizeObserver && document.body) {
+    new ResizeObserver(report).observe(document.body);
+  }
+  window.addEventListener("load", report);
+  document.addEventListener("input", function () { setTimeout(report, 60); });
+  document.addEventListener("click", function () { setTimeout(report, 60); });
+  setTimeout(report, 400);
+})();
+</script>
+</body>
+</html>
