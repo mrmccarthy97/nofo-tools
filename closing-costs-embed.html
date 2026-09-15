@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+  html { color-scheme: light; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>North Fork Closing Costs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ground: #F5F8F3;
+    --surface: #FFFFFF;
+    --surface-2: #EBF0E8;
+    --ink: #14231A;
+    --ink-2: #3C4E44;
+    --muted: #6C7A70;
+    --rule: #D7DFD4;
+    --rule-soft: #E6EBE3;
+    --accent: #2F5C43;
+    --accent-quiet: #5C8770;
+    --brass: #8A6D2F;
+    --band-bg: #16301F;
+    --band-ink: #F1F5EF;
+    --band-muted: #A3BCAD;
+    --field-bg: #FFFFFF;
+    --f-display: "Playfair Display", Georgia, serif;
+    --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0E1510; --surface: #161F19; --surface-2: #1D2821;
+      --ink: #E9EFE8; --ink-2: #BDC9BF; --muted: #8C9B91;
+      --rule: #2A362E; --rule-soft: #212C24;
+      --accent: #7FB394; --accent-quiet: #5D8A70; --brass: #C9A55F;
+      --band-bg: #16201A; --band-ink: #E9EFE8; --band-muted: #8C9B91;
+      --field-bg: #111A14;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0E1510; --surface: #161F19; --surface-2: #1D2821;
+    --ink: #E9EFE8; --ink-2: #BDC9BF; --muted: #8C9B91;
+    --rule: #2A362E; --rule-soft: #212C24;
+    --accent: #7FB394; --accent-quiet: #5D8A70; --brass: #C9A55F;
+    --band-bg: #16201A; --band-ink: #E9EFE8; --band-muted: #8C9B91;
+    --field-bg: #111A14;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--ground); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  .band { background: var(--band-bg); color: var(--band-ink); }
+  .band-in { max-width: 1020px; margin: 0 auto; padding: 22px 24px 20px; }
+  .brandline { display: flex; align-items: center; gap: 10px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--band-muted); }
+  .brandline svg { width: 24px; height: 17px; flex: none; }
+  .band h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.1rem); line-height: 1.1; margin: 12px 0 6px; text-wrap: balance; }
+  .band p { margin: 0; font-size: 0.92rem; color: var(--band-muted); max-width: 54ch; }
+
+  main { max-width: 1020px; margin: 0 auto; padding-left: 24px; padding-right: 24px; padding-block: 20px 56px; }
+
+  .tabs { display: flex; gap: 3px; border-bottom: 1px solid var(--rule); margin-bottom: 22px; }
+  .tabs button {
+    appearance: none; background: none; border: 0; border-bottom: 2px solid transparent;
+    font-family: var(--f-body); font-size: 12px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); padding: 11px 14px; cursor: pointer;
+  }
+  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tabs button:hover { color: var(--ink); }
+
+  .grid { display: grid; grid-template-columns: minmax(250px, 340px) 1fr; gap: 26px; align-items: start; }
+
+  fieldset { border: 1px solid var(--rule); background: var(--surface); padding: 16px 18px 18px; margin: 0; }
+  legend { font-size: 10.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); padding: 0 7px; margin-left: -7px; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; margin-top: 14px; }
+  .field:first-of-type { margin-top: 6px; }
+  .field label { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+  .field .hint { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+  input[type="number"], input[type="text"] {
+    font-family: var(--f-body); font-size: 15px; font-variant-numeric: tabular-nums;
+    padding: 8px 10px; border: 1px solid var(--rule); background: var(--field-bg); color: var(--ink);
+    width: 100%; border-radius: 0;
+  }
+  .checks { display: flex; flex-direction: column; gap: 9px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule-soft); }
+  .check { display: flex; gap: 9px; align-items: flex-start; font-size: 12.5px; color: var(--ink-2); }
+  .check input { margin: 3px 0 0; accent-color: var(--accent); flex: none; }
+  .check span b { display: block; font-weight: 600; color: var(--ink); }
+  .check span i { font-style: normal; font-size: 11.5px; color: var(--muted); }
+
+  /* results */
+  .out { background: var(--surface); border: 1px solid var(--rule); }
+  .out-top { padding: 18px 20px 16px; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: flex-end; }
+  .big { display: block; }
+  .big .k { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .big .v { display: block; font-family: var(--f-display); font-size: 2.2rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+  .big.sub .v { font-size: 1.35rem; color: var(--ink-2); }
+
+  .rows { padding: 4px 20px 14px; }
+  .rowgroup { margin-top: 16px; }
+  .rowgroup h3 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; padding-bottom: 6px; border-bottom: 1px solid var(--rule-soft); }
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; padding: 7px 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+  .row:last-child { border-bottom: 0; }
+  .row .nm { font-size: 13.5px; }
+  .row .basis { grid-column: 1; font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .row .amt { grid-row: 1; grid-column: 2; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 14px; white-space: nowrap; text-align: right; }
+  .row.zero .nm, .row.zero .amt { color: var(--muted); font-weight: 400; }
+  .row.sum { border-top: 1px solid var(--rule); border-bottom: 0; margin-top: 4px; padding-top: 10px; }
+  .row.sum .nm { font-weight: 700; }
+  .row.sum .amt { font-weight: 700; }
+
+  details.assump { margin-top: 26px; border: 1px solid var(--rule); background: var(--surface); }
+  details.assump > summary {
+    cursor: pointer; padding: 13px 18px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--brass);
+    list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center;
+  }
+  details.assump > summary::-webkit-details-marker { display: none; }
+  details.assump > summary::after { content: "+"; font-size: 16px; color: var(--muted); }
+  details.assump[open] > summary::after { content: "\2212"; }
+  .assump-body { padding: 4px 18px 20px; border-top: 1px solid var(--rule-soft); }
+  .assump-body > p { font-size: 12.5px; color: var(--ink-2); max-width: 70ch; margin: 14px 0; }
+  .agrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px 20px; margin-top: 14px; }
+  .agrid .field { margin-top: 0; }
+  .aset { margin-top: 20px; }
+  .aset > h4 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+  .reset { appearance: none; background: none; border: 1px solid var(--rule); color: var(--ink-2); font-family: var(--f-body); font-size: 12px; font-weight: 600; padding: 8px 14px; cursor: pointer; margin-top: 20px; }
+  .reset:hover { border-color: var(--accent); color: var(--accent); }
+
+  .note { border-left: 2px solid var(--brass); background: var(--surface-2); padding: 13px 16px; margin: 22px 0 0; font-size: 12.5px; color: var(--ink-2); max-width: 78ch; }
+  .note b { color: var(--ink); }
+
+  footer { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 11.5px; color: var(--muted); max-width: 80ch; }
+  footer p { margin: 0 0 7px; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .out-top { gap: 14px 24px; }
+    .big .v { font-size: 1.8rem; }
+  }
+
+  @media print {
+    body { background: #fff; font-size: 11pt; }
+    .band { background: #fff; color: #14231A; border-bottom: 2px solid #16301F; }
+    .brandline, .band p { color: #6C7A70; }
+    .tabs, .reset, details.assump > summary::after { display: none; }
+    .grid { grid-template-columns: 1fr; gap: 16px; }
+    details.assump { break-inside: avoid; }
+    details.assump[open] > summary { color: #6C7A70; }
+    .out, fieldset, details.assump { border-color: #CDD7CA; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="band">
+  <div class="band-in">
+    <div class="brandline">
+      <svg viewBox="0 0 26 18" aria-hidden="true">
+        <path d="M2 1.2V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M3.6 2.2h19.6l-4.6 4.6 4.6 4.6H3.6z" fill="currentColor"/>
+      </svg>
+      Thomas J. McCarthy Real Estate &middot; Southold, New York
+    </div>
+    <h1>North Fork Closing Cost Estimator</h1>
+    <p>Built for Southold Township, where buyers pay the 2% Peconic Bay CPF and the 0.5% Community Housing Fund on top of everything else. Every rate below is adjustable.</p>
+  </div>
+</header>
+
+<main>
+  <div class="tabs" role="tablist" aria-label="Estimate type">
+    <button id="tab-buyer" role="tab" aria-selected="true" aria-controls="panel-buyer">Buyer estimate</button>
+    <button id="tab-seller" role="tab" aria-selected="false" aria-controls="panel-seller">Seller net sheet</button>
+  </div>
+
+  <!-- ============ BUYER ============ -->
+  <div id="panel-buyer" role="tabpanel" aria-labelledby="tab-buyer">
+    <div class="grid">
+      <fieldset>
+        <legend>The purchase</legend>
+
+        <div class="field">
+          <label for="b-price">Purchase price</label>
+          <input type="number" id="b-price" value="999000" min="0" step="1000" inputmode="numeric">
+        </div>
+
+        <div class="field">
+          <label for="b-down">Down payment (%)</label>
+          <input type="number" id="b-down" value="20" min="0" max="100" step="1" inputmode="decimal">
+          <span class="hint" id="b-loan-hint">Loan amount: &mdash;</span>
+        </div>
+
+        <div class="checks">
+          <label class="check">
+            <input type="checkbox" id="b-financed" checked>
+            <span><b>Financing the purchase</b><i>Nearly 60% of Q4 2025 North Fork sales were all cash. Uncheck for cash.</i></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="b-improved" checked>
+            <span><b>Improved property</b><i>A house on it. Uncheck for vacant land, which gets a smaller allowance.</i></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="b-fthb">
+            <span><b>Qualified first-time homebuyer</b><i>Household income cap $187,440. Purchase price cap $707,454. Both as of August 11, 2025.</i></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="out">
+        <div class="out-top">
+          <span class="big"><span class="k">Estimated cash to close</span><span class="v" id="b-total">&mdash;</span></span>
+          <span class="big sub"><span class="k">Closing costs</span><span class="v" id="b-costs">&mdash;</span></span>
+          <span class="big sub"><span class="k">Down payment</span><span class="v" id="b-downamt">&mdash;</span></span>
+        </div>
+        <div class="rows" id="b-rows"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SELLER ============ -->
+  <div id="panel-seller" role="tabpanel" aria-labelledby="tab-seller" hidden>
+    <div class="grid">
+      <fieldset>
+        <legend>The sale</legend>
+
+        <div class="field">
+          <label for="s-price">Sale price</label>
+          <input type="number" id="s-price" value="999000" min="0" step="1000" inputmode="numeric">
+        </div>
+
+        <div class="field">
+          <label for="s-payoff">Mortgage payoff</label>
+          <input type="number" id="s-payoff" value="0" min="0" step="1000" inputmode="numeric">
+          <span class="hint">Remaining principal, plus any per diem interest.</span>
+        </div>
+
+        <div class="field">
+          <label for="s-listfee">Listing side commission (%)</label>
+          <input type="number" id="s-listfee" value="2.5" min="0" max="10" step="0.1" inputmode="decimal">
+        </div>
+
+        <div class="field">
+          <label for="s-buyfee">Buyer agent compensation (%)</label>
+          <input type="number" id="s-buyfee" value="2.5" min="0" max="10" step="0.1" inputmode="decimal">
+          <span class="hint">Set to 0 if the buyer pays their own agent.</span>
+        </div>
+      </fieldset>
+
+      <div class="out">
+        <div class="out-top">
+          <span class="big"><span class="k">Estimated net proceeds</span><span class="v" id="s-net">&mdash;</span></span>
+          <span class="big sub"><span class="k">Total selling costs</span><span class="v" id="s-costs">&mdash;</span></span>
+        </div>
+        <div class="rows" id="s-rows"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ASSUMPTIONS ============ -->
+  <details class="assump" id="assump">
+    <summary>Rates and assumptions &mdash; every figure is editable</summary>
+    <div class="assump-body">
+
+      <p>The tax rates and recording fees below come from the Suffolk County Clerk and the Township's own first-time homebuyer checklist, current as of September 2026. The service costs are typical North Fork ranges, not quotes. Change any of them and both estimates recalculate.</p>
+
+      <p>One note on the first-time buyer exemption: the Township's checklist is written against the 2% Peconic Bay CPF. This tool applies it to the 0.5% Community Housing Fund as well, since both sit in the same article of the Tax Law. Worth confirming with the title company before a buyer relies on it.</p>
+
+      <div class="aset">
+        <h4>Transfer taxes, set by statute</h4>
+        <div class="agrid">
+          <div class="field">
+            <label for="a-cpf">Peconic Bay CPF (%)</label>
+            <input type="number" id="a-cpf" value="2" step="0.1" min="0">
+            <span class="hint">Buyer pays. Southold.</span>
+          </div>
+          <div class="field">
+            <label for="a-chf">Community Housing Fund (%)</label>
+            <input type="number" id="a-chf" value="0.5" step="0.1" min="0">
+            <span class="hint">Buyer pays. Since April 1, 2023.</span>
+          </div>
+          <div class="field">
+            <label for="a-allow-i">Allowance, improved ($)</label>
+            <input type="number" id="a-allow-i" value="200000" step="5000" min="0">
+            <span class="hint">Southold Township. Deducted before the 2.5% applies.</span>
+          </div>
+          <div class="field">
+            <label for="a-allow-u">Allowance, unimproved ($)</label>
+            <input type="number" id="a-allow-u" value="75000" step="5000" min="0">
+            <span class="hint">Southold Township vacant land.</span>
+          </div>
+          <div class="field">
+            <label for="a-fthb-price">First-time buyer price cap ($)</label>
+            <input type="number" id="a-fthb-price" value="707454" step="1000" min="0">
+            <span class="hint">80% of the SONYMA non-target one-family limit for Suffolk County.</span>
+          </div>
+          <div class="field">
+            <label for="a-fthb-income">First-time buyer income cap ($)</label>
+            <input type="number" id="a-fthb-income" value="187440" step="1000" min="0">
+            <span class="hint">Combined household. Shown for reference, not calculated here.</span>
+          </div>
+          <div class="field">
+            <label for="a-mansion">Mansion tax (%)</label>
+            <input type="number" id="a-mansion" value="1" step="0.1" min="0">
+            <span class="hint">Buyer pays. Flat rate outside NYC.</span>
+          </div>
+          <div class="field">
+            <label for="a-mansion-th">Mansion tax threshold ($)</label>
+            <input type="number" id="a-mansion-th" value="1000000" step="50000" min="0">
+            <span class="hint">Applies to the full price, not just the excess.</span>
+          </div>
+          <div class="field">
+            <label for="a-mort">Mortgage tax, borrower share (%)</label>
+            <input type="number" id="a-mort" value="0.8" step="0.05" min="0">
+            <span class="hint">Suffolk is 1.05% total: 0.5% basic, 0.3% SONYMA, 0.25% MTA. The MTA quarter point does not land on the borrower for a 1&ndash;2 family.</span>
+          </div>
+          <div class="field">
+            <label for="a-mort-ded">Mortgage tax deduction ($)</label>
+            <input type="number" id="a-mort-ded" value="30" step="5" min="0">
+            <span class="hint">Off the SONYMA portion, 1&ndash;2 family dwelling.</span>
+          </div>
+          <div class="field">
+            <label for="a-nys">NYS transfer tax</label>
+            <input type="text" id="a-nys" value="$2.00 per $500" disabled>
+            <span class="hint">Seller pays. Works out to 0.4%.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="aset">
+        <h4>Buyer service costs, typical North Fork</h4>
+        <div class="agrid">
+          <div class="field"><label for="a-title-pct">Owner's title insurance (%)</label><input type="number" id="a-title-pct" value="0.45" step="0.05" min="0"><span class="hint">TIRSA rates run roughly 0.4 to 0.6%.</span></div>
+          <div class="field"><label for="a-title-lender">Lender's policy ($)</label><input type="number" id="a-title-lender" value="500" step="50" min="0"><span class="hint">Simultaneous issue.</span></div>
+          <div class="field"><label for="a-title-fees">Search, exam, closing fees ($)</label><input type="number" id="a-title-fees" value="1250" step="50" min="0"></div>
+          <div class="field"><label for="a-survey">Survey ($)</label><input type="number" id="a-survey" value="1200" step="50" min="0"></div>
+          <div class="field"><label for="a-batty">Buyer's attorney ($)</label><input type="number" id="a-batty" value="4000" step="100" min="0"></div>
+          <div class="field"><label for="a-deed">Deed recording fee ($)</label><input type="number" id="a-deed" value="400" step="25" min="0"><span class="hint">Suffolk residential deed is $375 plus $5 per page.</span></div>
+          <div class="field"><label for="a-mortrec">Mortgage recording fee ($)</label><input type="number" id="a-mortrec" value="475" step="25" min="0"><span class="hint">$440 plus $5 per side. Separate from the mortgage tax. Financed only.</span></div>
+          <div class="field"><label for="a-inspect">Home inspection ($)</label><input type="number" id="a-inspect" value="900" step="50" min="0"></div>
+          <div class="field"><label for="a-bank">Lender fees ($)</label><input type="number" id="a-bank" value="1800" step="100" min="0"><span class="hint">Origination, processing, wire. Financed only.</span></div>
+          <div class="field"><label for="a-appraisal">Appraisal ($)</label><input type="number" id="a-appraisal" value="750" step="50" min="0"><span class="hint">Financed only.</span></div>
+          <div class="field"><label for="a-prepaid">Prepaids and escrows ($)</label><input type="number" id="a-prepaid" value="4000" step="250" min="0"><span class="hint">The least predictable line. Depends on closing date and the lender's cushion.</span></div>
+        </div>
+      </div>
+
+      <div class="aset">
+        <h4>Seller service costs</h4>
+        <div class="agrid">
+          <div class="field"><label for="a-satty">Seller's attorney ($)</label><input type="number" id="a-satty" value="4000" step="100" min="0"></div>
+          <div class="field"><label for="a-sclose">Closer, continuation, misc ($)</label><input type="number" id="a-sclose" value="600" step="50" min="0"></div>
+          <div class="field"><label for="a-ssurvey">Survey provided by seller ($)</label><input type="number" id="a-ssurvey" value="0" step="100" min="0"><span class="hint">Only if the seller agrees to supply one.</span></div>
+        </div>
+      </div>
+
+      <button class="reset" type="button" id="reset">Reset every figure to default</button>
+    </div>
+  </details>
+
+  <div class="note">
+    <b>What this does not include.</b> Property tax and fuel adjustments between buyer and seller, which depend entirely on the closing date. Any capital gains exposure on the seller side, which is a question for an accountant. Repairs negotiated after inspection. Association or private road fees. Anything specific to the parcel, which is exactly the kind of thing worth a phone call about.
+  </div>
+
+  <footer>
+    <p><b>This is an estimate, not a closing statement.</b> Figures are for Southold Township as of September 2026 and are provided for planning purposes only. Transfer tax allowances, first-time homebuyer limits and title rates change. Nothing here is legal, tax or lending advice, and the actual numbers come from your attorney, title company and lender.</p>
+    <p>Rate sources: NY Tax Law &sect;1402-a (mansion tax), Suffolk County Clerk deed and mortgage recording schedule (recording fees and mortgage tax), Southold Township first-time homebuyer exemption checklist effective August 11, 2025 (income and price caps), TIRSA rate manual (title insurance). Thomas J. McCarthy Real Estate, Inc., 46520 Route 48, Southold NY 11971.</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var DEFAULTS = {
+    "a-cpf": 2, "a-chf": 0.5, "a-allow-i": 200000, "a-allow-u": 75000,
+    "a-fthb-price": 707454, "a-fthb-income": 187440,
+    "a-mansion": 1, "a-mansion-th": 1000000, "a-mort": 0.8, "a-mort-ded": 30,
+    "a-title-pct": 0.45, "a-title-lender": 500, "a-title-fees": 1250,
+    "a-survey": 1200, "a-batty": 4000, "a-deed": 400, "a-mortrec": 475,
+    "a-inspect": 900, "a-bank": 1800, "a-appraisal": 750, "a-prepaid": 4000,
+    "a-satty": 4000, "a-sclose": 600, "a-ssurvey": 0
+  };
+  var KEY = "mccarthy-closing-assumptions-v2";
+
+  var usd = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  var $ = function (id) { return document.getElementById(id); };
+  var num = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var saved = JSON.parse(raw);
+      Object.keys(DEFAULTS).forEach(function (k) {
+        if (saved[k] !== undefined && $(k)) $(k).value = saved[k];
+      });
+    } catch (e) { /* private window, blocked storage: defaults are fine */ }
+  }
+  function save() {
+    try {
+      var out = {};
+      Object.keys(DEFAULTS).forEach(function (k) { if ($(k)) out[k] = $(k).value; });
+      localStorage.setItem(KEY, JSON.stringify(out));
+    } catch (e) { /* nothing to do */ }
+  }
+
+  function group(title, rows) {
+    var parts = ['<div class="rowgroup"><h3>' + title + "</h3>"];
+    rows.forEach(function (r) {
+      if (r.skip) return;
+      var zero = !r.sum && Math.round(r.amt) === 0;
+      parts.push(
+        '<div class="row' + (r.sum ? " sum" : "") + (zero ? " zero" : "") + '">' +
+          '<span class="nm">' + r.nm + "</span>" +
+          '<span class="amt">' + usd.format(r.amt) + "</span>" +
+          (r.basis ? '<span class="basis">' + r.basis + "</span>" : "") +
+        "</div>"
+      );
+    });
+    return parts.join("") + "</div>";
+  }
+
+  function buyer() {
+    var price = Math.max(0, num("b-price"));
+    var financed = $("b-financed").checked;
+    var improved = $("b-improved").checked;
+    var fthb = $("b-fthb").checked;
+    var downPct = Math.min(100, Math.max(0, num("b-down")));
+    var down = financed ? price * downPct / 100 : price;
+    var loan = financed ? Math.max(0, price - down) : 0;
+
+    $("b-loan-hint").textContent = financed
+      ? "Loan amount: " + usd.format(loan)
+      : "Paying cash, no loan.";
+
+    var allowance = improved ? num("a-allow-i") : num("a-allow-u");
+    var taxable = Math.max(0, price - allowance);
+
+    var fthbCap = num("a-fthb-price");
+    var fthbApplies = fthb && price <= fthbCap;
+    var fthbBlocked = fthb && !fthbApplies;
+
+    var cpf = fthbApplies ? 0 : taxable * num("a-cpf") / 100;
+    var chf = fthbApplies ? 0 : taxable * num("a-chf") / 100;
+    var mansion = price >= num("a-mansion-th") ? price * num("a-mansion") / 100 : 0;
+    var mortTax = loan > 0 ? Math.max(0, loan * num("a-mort") / 100 - num("a-mort-ded")) : 0;
+
+    var exemptNote = "Exempt, first-time homebuyer";
+    var blockedNote = "Price is above the " + usd.format(fthbCap) + " first-time buyer cap";
+
+    var taxes = [
+      { nm: "Peconic Bay CPF", amt: cpf,
+        basis: fthbApplies ? exemptNote
+             : fthbBlocked ? blockedNote
+             : num("a-cpf") + "% of " + usd.format(taxable) + " (price less the " + usd.format(allowance) + " allowance)" },
+      { nm: "Community Housing Fund", amt: chf,
+        basis: fthbApplies ? exemptNote : num("a-chf") + "% of " + usd.format(taxable) },
+      { nm: "Mansion tax", amt: mansion,
+        basis: mansion ? num("a-mansion") + "% of the full " + usd.format(price) : "Not owed below " + usd.format(num("a-mansion-th")) },
+      { nm: "Mortgage recording tax", amt: mortTax, skip: !financed,
+        basis: num("a-mort") + "% of " + usd.format(loan) + " less the " + usd.format(num("a-mort-ded")) + " deduction" }
+    ];
+    var taxTotal = cpf + chf + mansion + mortTax;
+    taxes.push({ nm: "Taxes subtotal", amt: taxTotal, sum: true });
+
+    var titleIns = price * num("a-title-pct") / 100;
+    var titleRows = [
+      { nm: "Owner's title insurance", amt: titleIns, basis: num("a-title-pct") + "% of " + usd.format(price) },
+      { nm: "Lender's policy", amt: num("a-title-lender"), skip: !financed },
+      { nm: "Search, exam and closing fees", amt: num("a-title-fees") },
+      { nm: "Survey", amt: num("a-survey") },
+      { nm: "Deed recording fee", amt: num("a-deed") },
+      { nm: "Mortgage recording fee", amt: num("a-mortrec"), skip: !financed }
+    ];
+    var titleTotal = titleIns + (financed ? num("a-title-lender") + num("a-mortrec") : 0) +
+      num("a-title-fees") + num("a-survey") + num("a-deed");
+    titleRows.push({ nm: "Title and recording subtotal", amt: titleTotal, sum: true });
+
+    var proRows = [
+      { nm: "Buyer's attorney", amt: num("a-batty") },
+      { nm: "Home inspection", amt: num("a-inspect") },
+      { nm: "Lender fees", amt: num("a-bank"), skip: !financed },
+      { nm: "Appraisal", amt: num("a-appraisal"), skip: !financed },
+      { nm: "Prepaids and escrows", amt: num("a-prepaid"), skip: !financed, basis: "Varies with closing date" }
+    ];
+    var proTotal = num("a-batty") + num("a-inspect") +
+      (financed ? num("a-bank") + num("a-appraisal") + num("a-prepaid") : 0);
+    proRows.push({ nm: "Services subtotal", amt: proTotal, sum: true });
+
+    var costs = taxTotal + titleTotal + proTotal;
+
+    $("b-rows").innerHTML =
+      group("Taxes", taxes) +
+      group("Title and recording", titleRows) +
+      group("Professional services", proRows);
+
+    $("b-total").textContent = usd.format(down + costs);
+    $("b-costs").textContent = usd.format(costs);
+    $("b-downamt").textContent = financed ? usd.format(down) : "Cash purchase";
+  }
+
+  function seller() {
+    var price = Math.max(0, num("s-price"));
+    var payoff = Math.max(0, num("s-payoff"));
+    var listPct = num("s-listfee"), buyPct = num("s-buyfee");
+    var listFee = price * listPct / 100;
+    var buyFee = price * buyPct / 100;
+
+    // NYS transfer tax: $2.00 for each $500 or fractional part thereof.
+    var nys = Math.ceil(price / 500) * 2;
+
+    var commRows = [
+      { nm: "Listing side commission", amt: listFee, basis: listPct + "% of " + usd.format(price) },
+      { nm: "Buyer agent compensation", amt: buyFee, basis: buyPct + "% of " + usd.format(price) },
+      { nm: "Commission subtotal", amt: listFee + buyFee, sum: true }
+    ];
+
+    var otherRows = [
+      { nm: "NYS transfer tax", amt: nys, basis: "$2.00 per $500 of price" },
+      { nm: "Seller's attorney", amt: num("a-satty") },
+      { nm: "Closer, continuation and misc", amt: num("a-sclose") },
+      { nm: "Survey provided by seller", amt: num("a-ssurvey") },
+      { nm: "Mortgage payoff", amt: payoff, basis: payoff ? "Principal balance entered above" : "No mortgage entered" }
+    ];
+    var otherTotal = nys + num("a-satty") + num("a-sclose") + num("a-ssurvey") + payoff;
+    otherRows.push({ nm: "Other costs subtotal", amt: otherTotal, sum: true });
+
+    var total = listFee + buyFee + otherTotal;
+
+    $("s-rows").innerHTML =
+      group("Commission", commRows) +
+      group("Taxes, services and payoff", otherRows);
+
+    $("s-costs").textContent = usd.format(total);
+    $("s-net").textContent = usd.format(price - total);
+  }
+
+  function recalc() { buyer(); seller(); save(); }
+
+  // tabs
+  function select(which) {
+    var isBuyer = which === "buyer";
+    $("tab-buyer").setAttribute("aria-selected", String(isBuyer));
+    $("tab-seller").setAttribute("aria-selected", String(!isBuyer));
+    $("panel-buyer").hidden = !isBuyer;
+    $("panel-seller").hidden = isBuyer;
+  }
+  $("tab-buyer").addEventListener("click", function () { select("buyer"); });
+  $("tab-seller").addEventListener("click", function () { select("seller"); });
+
+  $("reset").addEventListener("click", function () {
+    Object.keys(DEFAULTS).forEach(function (k) { if ($(k)) $(k).value = DEFAULTS[k]; });
+    recalc();
+  });
+
+  document.addEventListener("input", function (e) {
+    if (e.target.matches("input")) recalc();
+  });
+  document.addEventListener("change", function (e) {
+    if (e.target.matches('input[type="checkbox"]')) recalc();
+  });
+
+  load();
+  recalc();
+})();
+</script>
+
+<script>
+(function () {
+  function report() {
+    var h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body ? document.body.scrollHeight : 0
+    );
+    try { parent.postMessage({ mccarthyCalcHeight: h }, "*"); } catch (e) {}
+  }
+  if (window.ResizeObserver && document.body) {
+    new ResizeObserver(report).observe(document.body);
+  }
+  window.addEventListener("load", report);
+  document.addEventListener("input", function () { setTimeout(report, 60); });
+  document.addEventListener("click", function () { setTimeout(report, 60); });
+  setTimeout(report, 400);
+})();
+</script>
+</body>
+</html>
